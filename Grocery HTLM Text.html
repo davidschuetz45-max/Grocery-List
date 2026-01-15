@@ -1,0 +1,1048 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.65">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'Apple Color Emoji'}
+    span.s2 {font: 12.0px 'Lucida Grande'}
+    span.s3 {font: 12.0px 'Zapf Dingbats'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="theme-color" content="#2563eb"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Smart Grocery List&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f9fafb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-font-smoothing: antialiased;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: env(safe-area-inset-bottom);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #111827;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tabs {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: -2px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom-color: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.welcome-screen {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 60px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.welcome-screen h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #111827;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.welcome-screen p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 32px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.add-item-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #eff6ff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.input-group {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="text"], textarea, select {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #d1d5db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-success {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #059669;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-danger {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #dc2626;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-small {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 6px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.help-text {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.store-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.store-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #111827;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.items-list {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f9fafb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item:last-child {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item input[type="checkbox"] {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-name {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #111827;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-name.checked {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: line-through;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #9ca3af;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-actions {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.complete-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(0, 0, 0, 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-y: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-height: 90vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-y: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.close-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-mode-tabs {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-mode-tabs .btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #111827;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-mode-tabs .btn.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-link {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-ingredients {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.recipe-ingredient {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.history-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.history-date {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.history-summary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.missing-items-banner {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fef3c7;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #fbbf24;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #92400e;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.empty-state {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.household-code {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f3f4f6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 16px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.household-code-label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.household-code-value {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #111827;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;<span class="s1">🛒</span> Smart Grocery List&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab active" onclick="switchTab('list')"&gt;Shopping List&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab" onclick="switchTab('missing')"&gt;Missing Items&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab" onclick="switchTab('recipes')"&gt;Recipes&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab" onclick="switchTab('history')"&gt;Previous Lists&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="welcomeScreen" class="welcome-screen hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Welcome! <span class="s1">👋</span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Start creating your organized grocery list&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" onclick="startNewList()" style="width: 100%; max-width: 300px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span><span class="s1">➕</span> Start a New List</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid #e5e7eb;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p style="margin-bottom: 16px;"&gt;Or join a household list:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="joinCode" placeholder="Enter household code" style="max-width: 300px; margin-bottom: 12px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-primary" onclick="joinHousehold()" style="width: 100%; max-width: 300px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Join Household</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="listTab"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="householdInfo" class="household-code hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="household-code-label"&gt;Your Household Code (share with family)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="household-code-value" id="householdCodeDisplay"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="font-size: 12px; color: #6b7280; margin-top: 8px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Others can use this code to access the same list</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="add-item-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="input-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="newItem" placeholder="Enter item name..." onkeypress="if(event.key==='Enter') addItem()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-primary" onclick="addItem()"&gt;<span class="s1">➕</span> Add&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="help-text"&gt;Items will be automatically categorized and added to the appropriate store list&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="aldiSection" class="store-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="store-title"&gt;Aldi&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="aldiList" class="items-list"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="krogerSection" class="store-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="store-title"&gt;Kroger&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="krogerList" class="items-list"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-success complete-btn" onclick="completeList()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span><span class="s2">✓</span> Shopping Complete</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="missingTab" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 style="margin-bottom: 16px;"&gt;Items Not Found&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="help-text" style="margin-bottom: 24px;"&gt;These items were not checked off when you completed your last shopping trip&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="missingList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="recipesTab" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" onclick="showRecipeModal()" style="margin-bottom: 24px; width: 100%;"&gt;<span class="s1">➕</span> Add Recipe&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="recipesList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="historyTab" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 style="margin-bottom: 16px;"&gt;Previous Shopping Trips&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="historyList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Recipe Modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="recipeModal" class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="modal-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="modal-title"&gt;Add Recipe&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="close-btn" onclick="closeRecipeModal()"&gt;<span class="s3">✕</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="text" id="recipeName" placeholder="Recipe name..." style="margin-bottom: 16px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="recipe-mode-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn active" onclick="setRecipeMode('text')"&gt;<span class="s1">📝</span> Text&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" onclick="setRecipeMode('photo')"&gt;<span class="s1">📷</span> Photo&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" onclick="setRecipeMode('url')"&gt;<span class="s1">🔗</span> URL&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="textMode"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;textarea id="recipeText" placeholder="Enter ingredients (one per line)..." rows="8"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="photoMode" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="padding: 40px; border: 2px dashed #d1d5db; border-radius: 8px; text-align: center; color: #6b7280;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="font-size: 48px; margin-bottom: 8px;"&gt;<span class="s1">📷</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Photo capture feature - coming soon!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="font-size: 14px; margin-top: 8px;"&gt;For now, use text entry or URL&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="urlMode" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="url" id="recipeUrl" placeholder="https://example.com/recipe"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" onclick="saveRecipe()" style="width: 100%; margin-top: 16px;"&gt;Save Recipe&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ALDI_CATEGORIES = ['Fruit', 'Vegetables', 'Bread', 'Chips', 'Meat &amp; Seafood', 'Cheese', 'Pasta', 'Cooking Stocks', 'Eggs', 'Dairy', 'Drinks', 'Juices', 'Canned Vegetables', 'Spices', 'Accessory Items', 'Frozen Foods'];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const KROGER_CATEGORIES = ['Produce', 'Meat &amp; Seafood', 'Pickles, Sauces, Condiments &amp; Pasta', 'International &amp; Rice', 'Baking', 'Spices', 'Coffee &amp; Tea', 'Dairy', 'Snacks', 'Paper Goods', 'Cheese', 'Distilled Water', 'Juices', 'Eggs', 'Alcohol', 'Frozen Foods'];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const KROGER_DEFAULT_ITEMS = ['shallots', 'shallot', 'bacon', 'pickles', 'pickle', 'gnocchi', 'chocolate chips', 'chocolate chip', 'condiments', 'condiment', 'paper towels', 'paper towel', 'white rice', 'alcohol', 'beer', 'wine', 'vodka', 'whiskey', 'rum', 'gin', 'tequila', 'liquor', 'distilled water', 'pineapple'];</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let householdCode = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let aldiItems = {};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let krogerItems = {};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let recipes = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let historyLists = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let missingItems = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentRecipeMode = 'text';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let syncInterval = null;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function generateHouseholdCode() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return Math.random().toString(36).substring(2, 8).toUpperCase();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function loadData() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>householdCode = localStorage.getItem('householdCode');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!householdCode) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('welcomeScreen').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('listTab').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('householdCodeDisplay').textContent = householdCode;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('householdInfo').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('welcomeScreen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('listTab').classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Load from shared storage first</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const data = await window.storage.get(`household:${householdCode}`);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (data &amp;&amp; data.value) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const parsed = JSON.parse(data.value);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>aldiItems = parsed.aldiItems || {};</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>krogerItems = parsed.krogerItems || {};</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log('No shared data yet, will create on first save');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Load personal data (recipes, history, missing items)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const savedRecipes = localStorage.getItem('recipes');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const savedHistory = localStorage.getItem('historyLists');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const savedMissing = localStorage.getItem('missingItems');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (savedRecipes) recipes = JSON.parse(savedRecipes);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (savedHistory) historyLists = JSON.parse(savedHistory);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (savedMissing) missingItems = JSON.parse(savedMissing);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderRecipes();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderMissingItems();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderHistory();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>startSync();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function saveData() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!householdCode) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>aldiItems,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>krogerItems,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>lastUpdated: Date.now()</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>await window.storage.set(`household:${householdCode}`, JSON.stringify(data), true);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error('Failed to save to shared storage:', e);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('recipes', JSON.stringify(recipes));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('historyLists', JSON.stringify(historyLists));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('missingItems', JSON.stringify(missingItems));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startSync() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (syncInterval) clearInterval(syncInterval);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>syncInterval = setInterval(async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!householdCode) return;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const data = await window.storage.get(`household:${householdCode}`);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (data &amp;&amp; data.value) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const parsed = JSON.parse(data.value);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>aldiItems = parsed.aldiItems || {};</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>krogerItems = parsed.krogerItems || {};</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.log('Sync check failed');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 3000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startNewList() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>householdCode = generateHouseholdCode();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('householdCode', householdCode);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('welcomeScreen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('listTab').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('householdCodeDisplay').textContent = householdCode;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('householdInfo').classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Initialize empty lists</p>
+<p class="p1"><span class="Apple-converted-space">            </span>aldiItems = {};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>krogerItems = {};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>startSync();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function joinHousehold() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const code = document.getElementById('joinCode').value.trim().toUpperCase();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!code) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert('Please enter a household code');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>householdCode = code;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('householdCode', householdCode);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('welcomeScreen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('listTab').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('householdCodeDisplay').textContent = householdCode;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('householdInfo').classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Load the household's data</p>
+<p class="p1"><span class="Apple-converted-space">            </span>await loadData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function shouldDefaultToKroger(itemName) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = itemName.toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return KROGER_DEFAULT_ITEMS.some(krogerItem =&gt; name.includes(krogerItem));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function categorizeItem(itemName, store) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = itemName.toLowerCase();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const categoryMap = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'fruit': ['apple', 'banana', 'orange', 'grape', 'strawberry', 'blueberry', 'raspberry', 'blackberry', 'melon', 'watermelon', 'cantaloupe', 'peach', 'pear', 'plum', 'cherry', 'kiwi', 'mango', 'pineapple', 'avocado', 'lemon', 'lime'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'vegetables': ['lettuce', 'spinach', 'kale', 'carrot', 'celery', 'broccoli', 'cauliflower', 'pepper', 'tomato', 'cucumber', 'onion', 'garlic', 'potato', 'sweet potato', 'squash', 'zucchini', 'eggplant', 'mushroom', 'corn', 'peas', 'beans', 'cabbage', 'asparagus', 'shallot'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'produce': ['lettuce', 'spinach', 'kale', 'carrot', 'celery', 'broccoli', 'cauliflower', 'pepper', 'tomato', 'cucumber', 'onion', 'garlic', 'potato', 'sweet potato', 'squash', 'zucchini', 'eggplant', 'mushroom', 'corn', 'peas', 'beans', 'cabbage', 'asparagus', 'shallot'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'bread': ['bread', 'bagel', 'roll', 'bun', 'tortilla', 'pita', 'naan', 'croissant', 'muffin', 'english muffin'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'chips': ['chips', 'pretzels', 'crackers', 'popcorn', 'doritos', 'cheetos', 'lays'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'snacks': ['chips', 'pretzels', 'crackers', 'popcorn', 'doritos', 'cheetos', 'lays', 'cookie', 'candy', 'chocolate', 'granola'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'meat &amp; seafood': ['chicken', 'beef', 'pork', 'turkey', 'lamb', 'bacon', 'sausage', 'ham', 'steak', 'fish', 'salmon', 'tuna', 'shrimp', 'crab', 'lobster', 'ground beef', 'ground turkey'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'cheese': ['cheese', 'cheddar', 'mozzarella', 'parmesan', 'swiss', 'provolone', 'brie', 'feta', 'gouda', 'cream cheese'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'pasta': ['pasta', 'spaghetti', 'penne', 'macaroni', 'linguine', 'fettuccine', 'ravioli', 'noodles', 'ramen', 'gnocchi'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'cooking stocks': ['broth', 'stock', 'bouillon'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'pickles, sauces, condiments &amp; pasta': ['sauce', 'ketchup', 'mustard', 'mayo', 'mayonnaise', 'ranch', 'dressing', 'salsa', 'hot sauce', 'soy sauce', 'worcestershire', 'vinegar', 'pickle', 'relish', 'bbq', 'condiment'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'eggs': ['egg', 'eggs'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'dairy': ['milk', 'yogurt', 'butter', 'sour cream', 'whipped cream', 'half and half', 'creamer'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'drinks': ['soda', 'pop', 'sprite', 'coke', 'pepsi', 'ginger ale', 'sparkling water', 'seltzer'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'juices': ['juice', 'orange juice', 'apple juice', 'cranberry', 'lemonade'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'canned vegetables': ['canned', 'can of'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'international &amp; rice': ['rice', 'white rice', 'brown rice', 'jasmine rice', 'basmati', 'quinoa', 'couscous', 'taco', 'enchilada'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'baking': ['flour', 'sugar', 'brown sugar', 'baking soda', 'baking powder', 'yeast', 'vanilla', 'chocolate chips', 'chocolate chip', 'cocoa', 'oil', 'vegetable oil', 'olive oil', 'coconut oil'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'spices': ['spice', 'cinnamon', 'black pepper', 'salt', 'paprika', 'cumin', 'oregano', 'basil', 'thyme', 'rosemary', 'garlic powder', 'onion powder', 'chili powder', 'cayenne'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'coffee &amp; tea': ['coffee', 'tea', 'espresso', 'k-cup', 'green tea', 'black tea'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'accessory items': ['bag', 'trash bag', 'ziplock', 'foil', 'aluminum foil', 'plastic wrap', 'parchment', 'napkin', 'tissue', 'toilet paper', 'paper towel', 'cleaning', 'detergent', 'soap', 'shampoo', 'conditioner', 'toothpaste', 'deodorant'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'paper goods': ['napkin', 'tissue', 'toilet paper', 'paper towel', 'paper plate'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'distilled water': ['water', 'distilled water', 'spring water'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'alcohol': ['beer', 'wine', 'vodka', 'whiskey', 'rum', 'gin', 'tequila', 'liquor'],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'frozen foods': ['frozen', 'ice cream', 'pizza', 'frozen pizza', 'popsicle']</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const [category, keywords] of Object.entries(categoryMap)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (const keyword of keywords) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (name.includes(keyword)) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (store === 'aldi') {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'produce') return 'Vegetables';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'pickles, sauces, condiments &amp; pasta') return 'Pasta';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'international &amp; rice') return 'Pasta';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'baking') return 'Cooking Stocks';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'coffee &amp; tea') return 'Drinks';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'paper goods') return 'Accessory Items';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'distilled water') return 'Drinks';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (category === 'alcohol') return 'Drinks';</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const aldiCat = ALDI_CATEGORIES.find(c =&gt; c.toLowerCase() === category);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (aldiCat) return aldiCat;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const krogerCat = KROGER_CATEGORIES.find(c =&gt; c.toLowerCase() === category);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (krogerCat) return krogerCat;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>return store === 'aldi' ? ALDI_CATEGORIES[0] : KROGER_CATEGORIES[0];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addItem() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const input = document.getElementById('newItem');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const itemName = input.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!itemName) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const defaultStore = shouldDefaultToKroger(itemName) ? 'kroger' : 'aldi';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const category = categorizeItem(itemName, defaultStore);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const item = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: itemName,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>checked: false</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (defaultStore === 'aldi') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!aldiItems[category]) aldiItems[category] = [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>aldiItems[category].push(item);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!krogerItems[category]) krogerItems[category] = [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>krogerItems[category].push(item);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>input.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function toggleItem(store, category, itemId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const items = store === 'aldi' ? aldiItems : krogerItems;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const item = items[category].find(i =&gt; i.id === itemId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (item) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>item.checked = !item.checked;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function deleteItem(store, category, itemId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const items = store === 'aldi' ? aldiItems : krogerItems;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>items[category] = items[category].filter(i =&gt; i.id !== itemId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function moveToKroger(category, itemId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const item = aldiItems[category].find(i =&gt; i.id === itemId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!item) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>aldiItems[category] = aldiItems[category].filter(i =&gt; i.id !== itemId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const krogerCategory = KROGER_CATEGORIES[0];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!krogerItems[krogerCategory]) krogerItems[krogerCategory] = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>krogerItems[krogerCategory].push({...item, id: Date.now()});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderStoreList(store, categories, items, containerId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById(containerId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let html = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let allItems = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>categories.forEach(category =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const categoryItems = items[category] || [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>categoryItems.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allItems.push({...item, category});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (allItems.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>html = '&lt;p class="empty-state"&gt;No items yet&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>allItems.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>html += `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="checkbox" ${item.checked ? 'checked' : ''}<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                   </span>onchange="toggleItem('${store.toLowerCase()}', '${item.category}', ${item.id})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="item-name ${item.checked ? 'checked' : ''}"&gt;${item.name}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="item-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>${store === 'Aldi' ? `</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;button class="btn btn-primary btn-small" onclick="moveToKroger('${item.category}', ${item.id})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span><span class="s2">→</span> Kroger</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;button class="btn btn-danger btn-small" onclick="deleteItem('${store.toLowerCase()}', '${item.category}', ${item.id})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span><span class="s1">🗑️</span></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderLists() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderStoreList('Aldi', ALDI_CATEGORIES, aldiItems, 'aldiList');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderStoreList('Kroger', KROGER_CATEGORIES, krogerItems, 'krogerList');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function completeList() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const uncheckedItems = [];</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>ALDI_CATEGORIES.forEach(category =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const items = aldiItems[category] || [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>items.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!item.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>uncheckedItems.push({...item, store: 'Aldi', category});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>KROGER_CATEGORIES.forEach(category =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const items = krogerItems[category] || [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>items.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!item.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>uncheckedItems.push({...item, store: 'Kroger', category});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const historyEntry = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>date: new Date().toISOString(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>aldiItems: JSON.parse(JSON.stringify(aldiItems)),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>krogerItems: JSON.parse(JSON.stringify(krogerItems)),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>totalItems: Object.values(aldiItems).flat().length + Object.values(krogerItems).flat().length</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>historyLists.unshift(historyEntry);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (uncheckedItems.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>missingItems = uncheckedItems;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert(`Shopping complete! ${uncheckedItems.length} items moved to Missing Items list.`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert('Shopping complete! All items were found.');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>aldiItems = {};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>krogerItems = {};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderMissingItems();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderHistory();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderMissingItems() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('missingList');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (missingItems.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.innerHTML = '&lt;p class="empty-state"&gt;No missing items&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let html = '&lt;div class="items-list"&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>missingItems.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>html += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="item-name"&gt;${item.name}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="btn btn-primary btn-small" onclick="addMissingToList(${missingItems.indexOf(item)})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Add to List</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>html += '&lt;/div&gt;';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addMissingToList(index) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const item = missingItems[index];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const defaultStore = shouldDefaultToKroger(item.name) ? 'kroger' : 'aldi';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const category = categorizeItem(item.name, defaultStore);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const newItem = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: item.name,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>checked: false</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (defaultStore === 'aldi') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!aldiItems[category]) aldiItems[category] = [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>aldiItems[category].push(newItem);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!krogerItems[category]) krogerItems[category] = [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>krogerItems[category].push(newItem);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>missingItems.splice(index, 1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderMissingItems();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderHistory() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('historyList');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (historyLists.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.innerHTML = '&lt;p class="empty-state"&gt;No previous shopping trips yet&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = historyLists.map(entry =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="history-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="history-date"&gt;${new Date(entry.date).toLocaleDateString()} - ${new Date(entry.date).toLocaleTimeString()}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="history-summary"&gt;${entry.totalItems} items&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-primary" onclick="viewHistoryDetails(${entry.id})"&gt;View Details&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function viewHistoryDetails(entryId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const entry = historyLists.find(e =&gt; e.id === entryId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!entry) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let details = `Shopping Trip: ${new Date(entry.date).toLocaleDateString()}\n\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>details += 'ALDI:\n';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ALDI_CATEGORIES.forEach(cat =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const items = entry.aldiItems[cat] || [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>items.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>details += `${item.checked ? '<span class="s2">✓</span>' : '<span class="s2">○</span>'} ${item.name}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>details += '\nKROGER:\n';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>KROGER_CATEGORIES.forEach(cat =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const items = entry.krogerItems[cat] || [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>items.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>details += `${item.checked ? '<span class="s2">✓</span>' : '<span class="s2">○</span>'} ${item.name}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(details);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function switchTab(tab) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.tab').forEach(t =&gt; t.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>event.target.classList.add('active');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('listTab').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('missingTab').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('recipesTab').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('historyTab').classList.add('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (tab === 'list') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('listTab').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (tab === 'missing') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('missingTab').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderMissingItems();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (tab === 'recipes') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('recipesTab').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderRecipes();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (tab === 'history') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('historyTab').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderHistory();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showRecipeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('recipeModal').classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function closeRecipeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('recipeModal').classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('recipeName').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('recipeText').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('recipeUrl').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function setRecipeMode(mode) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentRecipeMode = mode;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.recipe-mode-tabs .btn').forEach(btn =&gt; btn.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>event.target.classList.add('active');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('textMode').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('photoMode').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('urlMode').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(mode + 'Mode').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveRecipe() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = document.getElementById('recipeName').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!name) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert('Please enter a recipe name');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let ingredients = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentRecipeMode === 'text') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const text = document.getElementById('recipeText').value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ingredients = text.split('\n').filter(line =&gt; line.trim()).map(line =&gt; line.trim());</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (currentRecipeMode === 'url') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const url = document.getElementById('recipeUrl').value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ingredients = [`URL: ${url}`];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const recipe = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: name,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ingredients: ingredients,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>mode: currentRecipeMode,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>url: currentRecipeMode === 'url' ? document.getElementById('recipeUrl').value : null</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>recipes.push(recipe);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeRecipeModal();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderRecipes();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderRecipes() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('recipesList');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (recipes.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.innerHTML = '&lt;p class="empty-state"&gt;No recipes yet&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = recipes.map(recipe =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="recipe-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="recipe-title"&gt;${recipe.name}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>${recipe.url ? `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="${recipe.url}" target="_blank" class="recipe-link"&gt;View Recipe Online&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="recipe-ingredients"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${recipe.ingredients.map(ing =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="recipe-ingredient"&gt;• ${ing}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-success" onclick="addRecipeToList(${recipe.id})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Add All to Grocery List</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addRecipeToList(recipeId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const recipe = recipes.find(r =&gt; r.id === recipeId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!recipe) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>recipe.ingredients.forEach(ingredient =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const defaultStore = shouldDefaultToKroger(ingredient) ? 'kroger' : 'aldi';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const category = categorizeItem(ingredient, defaultStore);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const item = {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>name: ingredient,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id: Date.now() + Math.random(),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>checked: false</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (defaultStore === 'aldi') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!aldiItems[category]) aldiItems[category] = [];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>aldiItems[category].push(item);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!krogerItems[category]) krogerItems[category] = [];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>krogerItems[category].push(item);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLists();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>switchTab('list');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert('Recipe ingredients added to grocery list!');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize on page load</p>
+<p class="p1"><span class="Apple-converted-space">        </span>window.addEventListener('DOMContentLoaded', function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loadData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
