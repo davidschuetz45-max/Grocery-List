@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2563eb">
+    <title>Smart Grocery List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f9fafb;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 16px;
+            padding-bottom: 80px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #e5e7eb;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            background: none;
+            color: #6b7280;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .tab.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        
+        .welcome-screen {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .welcome-screen h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+        
+        .welcome-screen p {
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+        
+        .add-item-section {
+            background: #eff6ff;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        input[type="text"], textarea, select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #059669;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+        
+        .help-text {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+        
+        .store-section {
+            margin-bottom: 40px;
+        }
+        
+        .store-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+        
+        .items-list {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .item-name {
+            flex: 1;
+            color: #111827;
+        }
+        
+        .item-name.checked {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .complete-btn {
+            width: 100%;
+            margin-top: 24px;
+            padding: 16px;
+            font-size: 18px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 16px;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        
+        .recipe-mode-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .recipe-mode-tabs .btn {
+            flex: 1;
+            background: #e5e7eb;
+            color: #111827;
+        }
+        
+        .recipe-mode-tabs .btn.active {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .recipe-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .recipe-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .recipe-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .recipe-ingredients {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        
+        .recipe-ingredient {
+            margin-bottom: 4px;
+        }
+        
+        .history-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .history-date {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .history-summary {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        
+        .household-code {
+            background: #f3f4f6;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .household-code-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .household-code-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #6b7280;
+            padding: 40px 16px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 Smart Grocery List</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('list')">Shopping List</button>
+            <button class="tab" onclick="switchTab('missing')">Missing Items</button>
+            <button class="tab" onclick="switchTab('recipes')">Recipes</button>
+            <button class="tab" onclick="switchTab('history')">Previous Lists</button>
+        </div>
+        
+        <div id="welcomeScreen" class="welcome-screen hidden">
+            <h2>Welcome! 👋</h2>
+            <p>Start creating your organized grocery list</p>
+            <button class="btn btn-primary" onclick="startNewList()" style="width: 100%; max-width: 300px;">
+                ➕ Start a New List
+            </button>
+            <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid #e5e7eb;">
+                <p style="margin-bottom: 16px;">Or join a household list:</p>
+                <input type="text" id="joinCode" placeholder="Enter household code" style="max-width: 300px; margin-bottom: 12px;">
+                <button class="btn btn-primary" onclick="joinHousehold()" style="width: 100%; max-width: 300px;">
+                    Join Household
+                </button>
+            </div>
+        </div>
+        
+        <div id="listTab">
+            <div id="householdInfo" class="household-code hidden">
+                <div class="household-code-label">Your Household Code (share with family)</div>
+                <div class="household-code-value" id="householdCodeDisplay"></div>
+                <div style="font-size: 12px; color: #6b7280; margin-top: 8px;">
+                    Others can use this code to access the same list
+                </div>
+            </div>
+
+            <div class="add-item-section">
+                <div class="input-group">
+                    <input type="text" id="newItem" placeholder="Enter item name..." onkeypress="if(event.key==='Enter') addItem()">
+                    <button class="btn btn-primary" onclick="addItem()">➕ Add</button>
+                </div>
+                <p class="help-text">Items will be automatically categorized and added to the appropriate store list</p>
+            </div>
+            
+            <div id="aldiSection" class="store-section">
+                <h2 class="store-title">Aldi</h2>
+                <div id="aldiList" class="items-list"></div>
+            </div>
+            
+            <div id="krogerSection" class="store-section">
+                <h2 class="store-title">Kroger</h2>
+                <div id="krogerList" class="items-list"></div>
+                <button class="btn btn-success complete-btn" onclick="completeList()">
+                    ✓ Shopping Complete
+                </button>
+            </div>
+        </div>
+        
+        <div id="missingTab" class="hidden">
+            <h2 style="margin-bottom: 16px;">Items Not Found</h2>
+            <p class="help-text" style="margin-bottom: 24px;">These items were not checked off when you completed your last shopping trip</p>
+            <div id="missingList"></div>
+        </div>
+        
+        <div id="recipesTab" class="hidden">
+            <button class="btn btn-primary" onclick="showRecipeModal()" style="margin-bottom: 24px; width: 100%;">➕ Add Recipe</button>
+            <div id="recipesList"></div>
+        </div>
+        
+        <div id="historyTab" class="hidden">
+            <h2 style="margin-bottom: 16px;">Previous Shopping Trips</h2>
+            <div id="historyList"></div>
+        </div>
+    </div>
+    
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Recipe</h2>
+                <button class="close-btn" onclick="closeRecipeModal()">✕</button>
+            </div>
+            <input type="text" id="recipeName" placeholder="Recipe name..." style="margin-bottom: 16px;">
+            <div class="recipe-mode-tabs">
+                <button class="btn active" id="textModeBtn" onclick="setRecipeMode('text')">📝 Text</button>
+                <button class="btn" id="photoModeBtn" onclick="setRecipeMode('photo')">📷 Photo</button>
+                <button class="btn" id="urlModeBtn" onclick="setRecipeMode('url')">🔗 URL</button>
+            </div>
+            <div id="textMode">
+                <textarea id="recipeText" placeholder="Enter ingredients (one per line)..." rows="8"></textarea>
+            </div>
+            <div id="photoMode" class="hidden">
+                <div style="padding: 40px; border: 2px dashed #d1d5db; border-radius: 8px; text-align: center; color: #6b7280;">
+                    <div style="font-size: 48px; margin-bottom: 8px;">📷</div>
+                    <p>Photo capture feature - coming soon!</p>
+                    <p style="font-size: 14px; margin-top: 8px;">For now, use text entry or URL</p>
+                </div>
+            </div>
+            <div id="urlMode" class="hidden">
+                <input type="url" id="recipeUrl" placeholder="https://example.com/recipe">
+            </div>
+            <button class="btn btn-primary" onclick="saveRecipe()" style="width: 100%; margin-top: 16px;">Save Recipe</button>
+        </div>
+    </div>
+    
+    <script>
+        const ALDI_CATEGORIES = ['Fruit', 'Vegetables', 'Bread', 'Chips', 'Meat & Seafood', 'Cheese', 'Pasta', 'Cooking Stocks', 'Eggs', 'Dairy', 'Drinks', 'Juices', 'Canned Vegetables', 'Spices', 'Accessory Items', 'Frozen Foods'];
+        const KROGER_CATEGORIES = ['Produce', 'Meat & Seafood', 'Pickles, Sauces, Condiments & Pasta', 'International & Rice', 'Baking', 'Spices', 'Coffee & Tea', 'Dairy', 'Snacks', 'Paper Goods', 'Cheese', 'Distilled Water', 'Juices', 'Eggs', 'Alcohol', 'Frozen Foods'];
+        const KROGER_DEFAULT_ITEMS = ['shallots', 'shallot', 'bacon', 'pickles', 'pickle', 'gnocchi', 'chocolate chips', 'chocolate chip', 'condiments', 'condiment', 'paper towels', 'paper towel', 'white rice', 'alcohol', 'beer', 'wine', 'vodka', 'whiskey', 'rum', 'gin', 'tequila', 'liquor', 'distilled water', 'pineapple'];
+        
+        let householdCode = '';
+        let aldiItems = {};
+        let krogerItems = {};
+        let recipes = [];
+        let historyLists = [];
+        let missingItems = [];
+        let currentRecipeMode = 'text';
+        
+        function generateHouseholdCode() {
+            return Math.random().toString(36).substring(2, 8).toUpperCase();
+        }
+        
+        function loadData() {
+            householdCode = localStorage.getItem('householdCode') || '';
+            
+            if (!householdCode) {
+                document.getElementById('welcomeScreen').classList.remove('hidden');
+                document.getElementById('listTab').classList.add('hidden');
+                return;
+            }
+            
+            document.getElementById('householdCodeDisplay').textContent = householdCode;
+            document.getElementById('householdInfo').classList.remove('hidden');
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('listTab').classList.remove('hidden');
+            
+            // Load shared household data
+            const savedHousehold = localStorage.getItem(`household:${householdCode}`);
+            if (savedHousehold) {
+                try {
+                    const parsed = JSON.parse(savedHousehold);
+                    aldiItems = parsed.aldiItems || {};
+                    krogerItems = parsed.krogerItems || {};
+                } catch (e) {
+                    console.error('Error loading household data:', e);
+                }
+            }
+            
+            // Load personal data
+            const savedRecipes = localStorage.getItem('recipes');
+            const savedHistory = localStorage.getItem('historyLists');
+            const savedMissing = localStorage.getItem('missingItems');
+            
+            if (savedRecipes) {
+                try {
+                    recipes = JSON.parse(savedRecipes);
+                } catch (e) {
+                    recipes = [];
+                }
+            }
+            if (savedHistory) {
+                try {
+                    historyLists = JSON.parse(savedHistory);
+                } catch (e) {
+                    historyLists = [];
+                }
+            }
+            if (savedMissing) {
+                try {
+                    missingItems = JSON.parse(savedMissing);
+                } catch (e) {
+                    missingItems = [];
+                }
+            }
+            
+            renderLists();
+            renderRecipes();
+            renderMissingItems();
+            renderHistory();
+        }
+        
+        function saveData() {
+            if (!householdCode) return;
+            
+            const householdData = {
+                aldiItems,
+                krogerItems,
+                lastUpdated: Date.now()
+            };
+            
+            // Save household data (shared)
+            localStorage.setItem(`household:${householdCode}`, JSON.stringify(householdData));
+            
+            // Save personal data
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+            localStorage.setItem('historyLists', JSON.stringify(historyLists));
+            localStorage.setItem('missingItems', JSON.stringify(missingItems));
+        }
+        
+        function startNewList() {
+            householdCode = generateHouseholdCode();
+            localStorage.setItem('householdCode', householdCode);
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('listTab').classList.remove('hidden');
+            document.getElementById('householdCodeDisplay').textContent = householdCode;
+            document.getElementById('householdInfo').classList.remove('hidden');
+            
+            aldiItems = {};
+            krogerItems = {};
+            
+            saveData();
+            renderLists();
+        }
+        
+        function joinHousehold() {
+            const code = document.getElementById('joinCode').value.trim().toUpperCase();
+            if (!code) {
+                alert('Please enter a household code');
+                return;
+            }
+            
+            householdCode = code;
+            localStorage.setItem('householdCode', householdCode);
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('listTab').classList.remove('hidden');
+            document.getElementById('householdCodeDisplay').textContent = householdCode;
+            document.getElementById('householdInfo').classList.remove('hidden');
+            
+            loadData();
+        }
+        
+        function shouldDefaultToKroger(itemName) {
+            const name = itemName.toLowerCase();
+            return KROGER_DEFAULT_ITEMS.some(krogerItem => name.includes(krogerItem));
+        }
+        
+        function categorizeItem(itemName, store) {
+            const name = itemName.toLowerCase();
+            
+            const categoryMap = {
+                'fruit': ['apple', 'banana', 'orange', 'grape', 'strawberry', 'blueberry', 'raspberry', 'blackberry', 'melon', 'watermelon', 'cantaloupe', 'peach', 'pear', 'plum', 'cherry', 'kiwi', 'mango', 'pineapple', 'avocado', 'lemon', 'lime'],
+                'vegetables': ['lettuce', 'spinach', 'kale', 'carrot', 'celery', 'broccoli', 'cauliflower', 'pepper', 'tomato', 'cucumber', 'onion', 'garlic', 'potato', 'sweet potato', 'squash', 'zucchini', 'eggplant', 'mushroom', 'corn', 'peas', 'beans', 'cabbage', 'asparagus', 'shallot'],
+                'produce': ['lettuce', 'spinach', 'kale', 'carrot', 'celery', 'broccoli', 'cauliflower', 'pepper', 'tomato', 'cucumber', 'onion', 'garlic', 'potato', 'sweet potato', 'squash', 'zucchini', 'eggplant', 'mushroom', 'corn', 'peas', 'beans', 'cabbage', 'asparagus', 'shallot'],
+                'bread': ['bread', 'bagel', 'roll', 'bun', 'tortilla', 'pita', 'naan', 'croissant', 'muffin', 'english muffin'],
+                'chips': ['chips', 'pretzels', 'crackers', 'popcorn', 'doritos', 'cheetos', 'lays'],
+                'snacks': ['chips', 'pretzels', 'crackers', 'popcorn', 'doritos', 'cheetos', 'lays', 'cookie', 'candy', 'chocolate', 'granola'],
+                'meat & seafood': ['chicken', 'beef', 'pork', 'turkey', 'lamb', 'bacon', 'sausage', 'ham', 'steak', 'fish', 'salmon', 'tuna', 'shrimp', 'crab', 'lobster', 'ground beef', 'ground turkey'],
+                'cheese': ['cheese', 'cheddar', 'mozzarella', 'parmesan', 'swiss', 'provolone', 'brie', 'feta', 'gouda', 'cream cheese'],
+                'pasta': ['pasta', 'spaghetti', 'penne', 'macaroni', 'linguine', 'fettuccine', 'ravioli', 'noodles', 'ramen', 'gnocchi'],
+                'cooking stocks': ['broth', 'stock', 'bouillon'],
+                'pickles, sauces, condiments & pasta': ['sauce', 'ketchup', 'mustard', 'mayo', 'mayonnaise', 'ranch', 'dressing', 'salsa', 'hot sauce', 'soy sauce', 'worcestershire', 'vinegar', 'pickle', 'relish', 'bbq', 'condiment'],
+                'eggs': ['egg', 'eggs'],
+                'dairy': ['milk', 'yogurt', 'butter', 'sour cream', 'whipped cream', 'half and half', 'creamer'],
+                'drinks': ['soda', 'pop', 'sprite', 'coke', 'pepsi', 'ginger ale', 'sparkling water', 'seltzer'],
+                'juices': ['juice', 'orange juice', 'apple juice', 'cranberry', 'lemonade'],
+                'canned vegetables': ['canned', 'can of'],
+                'international & rice': ['rice', 'white rice', 'brown rice', 'jasmine rice', 'basmati', 'quinoa', 'couscous', 'taco', 'enchilada'],
+                'baking': ['flour', 'sugar', 'brown sugar', 'baking soda', 'baking powder', 'yeast', 'vanilla', 'chocolate chips', 'chocolate chip', 'cocoa', 'oil', 'vegetable oil', 'olive oil', 'coconut oil'],
+                'spices': ['spice', 'cinnamon', 'black pepper', 'salt', 'paprika', 'cumin', 'oregano', 'basil', 'thyme', 'rosemary', 'garlic powder', 'onion powder', 'chili powder', 'cayenne'],
+                'coffee & tea': ['coffee', 'tea', 'espresso', 'k-cup', 'green tea', 'black tea'],
+                'accessory items': ['bag', 'trash bag', 'ziplock', 'foil', 'aluminum foil', 'plastic wrap', 'parchment', 'napkin', 'tissue', 'toilet paper', 'paper towel', 'cleaning', 'detergent', 'soap', 'shampoo', 'conditioner', 'toothpaste', 'deodorant'],
+                'paper goods': ['napkin', 'tissue', 'toilet paper', 'paper towel', 'paper plate'],
+                'distilled water': ['water', 'distilled water', 'spring water'],
+                'alcohol': ['beer', 'wine', 'vodka', 'whiskey', 'rum', 'gin', 'tequila', 'liquor'],
+                'frozen foods': ['frozen', 'ice cream', 'pizza', 'frozen pizza', 'popsicle']
+            };
+            
+            for (const [category, keywords] of Object.entries(categoryMap)) {
+                for (const keyword of keywords) {
+                    if (name.includes(keyword)) {
+                        if (store === 'aldi') {
+                            if (category === 'produce') return 'Vegetables';
+                            if (category === 'pickles, sauces, condiments & pasta') return 'Pasta';
+                            if (category === 'international & rice') return 'Pasta';
+                            if (category === 'baking') return 'Cooking Stocks';
+                            if (category === 'coffee & tea') return 'Drinks';
+                            if (category === 'paper goods') return 'Accessory Items';
+                            if (category === 'distilled water') return 'Drinks';
+                            if (category === 'alcohol') return 'Drinks';
+                            
+                            const aldiCat = ALDI_CATEGORIES.find(c => c.toLowerCase() === category);
+                            if (aldiCat) return aldiCat;
+                        } else {
+                            const krogerCat = KROGER_CATEGORIES.find(c => c.toLowerCase() === category);
+                            if (krogerCat) return krogerCat;
+                        }
+                    }
+                }
+            }
+            
+            return store === 'aldi' ? ALDI_CATEGORIES[0] : KROGER_CATEGORIES[0];
+        }
+        
+        function addItem() {
+            const input = document.getElementById('newItem');
+            const itemName = input.value.trim();
+            if (!itemName) return;
+            
+            const defaultStore = shouldDefaultToKroger(itemName) ? 'kroger' : 'aldi';
+            const category = categorizeItem(itemName, defaultStore);
+            const item = {
+                name: itemName,
+                id: Date.now() + Math.random(),
+                checked: false
+            };
+            
+            if (defaultStore === 'aldi') {
+                if (!aldiItems[category]) aldiItems[category] = [];
+                aldiItems[category].push(item);
+            } else {
+                if (!krogerItems[category]) krogerItems[category] = [];
+                krogerItems[category].push(item);
+            }
+            
+            input.value = '';
+            saveData();
+            renderLists();
+        }
+        
+        function toggleItem(store, category, itemId) {
+            const items = store === 'aldi' ? aldiItems : krogerItems;
+            const item = items[category].find(i => i.id === itemId);
+            if (item) {
+                item.checked = !item.checked;
+                saveData();
+                renderLists();
+            }
+        }
+        
+        function deleteItem(store, category, itemId) {
+            const items = store === 'aldi' ? aldiItems : krogerItems;
+            items[category] = items[category].filter(i => i.id !== itemId);
+            if (items[category].length === 0) {
+                delete items[category];
+            }
+            saveData();
+            renderLists();
+        }
+        
+        function moveToKroger(category, itemId) {
+            const item = aldiItems[category].find(i => i.id === itemId);
+            if (!item) return;
+            
+            aldiItems[category] = aldiItems[category].filter(i => i.id !== itemId);
+            if (aldiItems[category].length === 0) {
+                delete aldiItems[category];
+            }
+            
+            const krogerCategory = KROGER_CATEGORIES[0];
+            if (!krogerItems[krogerCategory]) krogerItems[krogerCategory] = [];
+            krogerItems[krogerCategory].push({...item, id: Date.now() + Math.random()});
+            
+            saveData();
+            renderLists();
+        }
+        
+        function renderStoreList(store, categories, items, containerId) {
+            const container = document.getElementById(containerId);
+            let html = '';
+            
+            let allItems = [];
+            categories.forEach(category => {
+                const categoryItems = items[category] || [];
+                categoryItems.forEach(item => {
+                    allItems.push({...item, category});
+                });
+            });
+            
+            if (allItems.length === 0) {
+                html = '<p class="empty-state">No items yet</p>';
+            } else {
+                allItems.forEach(item => {
+                    html += `
+                        <div class="item">
+                            <input type="checkbox" ${item.checked ? 'checked' : ''} 
+                                   onchange="toggleItem('${store.toLowerCase()}', '${item.category}', ${item.id})">
+                            <span class="item-name
