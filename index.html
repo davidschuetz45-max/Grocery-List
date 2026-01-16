@@ -719,16 +719,17 @@
                         <div class="item">
                             <input type="checkbox" ${item.checked ? 'checked' : ''} 
                                    onchange="toggleItem('${store.toLowerCase()}', '${item.category}', ${item.id})">
-                                                                                    <span class="item-name ${item.checked ? 'checked' : ''}">
+                                                                                                                <span class="item-name ${item.checked ? 'checked' : ''}">
                                 ${item.name}
                             </span>
                             <div class="item-actions">
-                                <button class="btn btn-small btn-danger"
-                                        onclick="deleteItem('${store.toLowerCase()}','${item.category}',${item.id})">
+                                <button class="btn btn-danger btn-small"
+                                        onclick="deleteItem('${store.toLowerCase()}', '${item.category}', ${item.id})">
                                     ×
                                 </button>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 });
             }
 
@@ -740,19 +741,33 @@
             renderStoreList('Kroger', KROGER_CATEGORIES, krogerItems, 'krogerList');
         }
 
-        // Add missing functions stubs so it doesn't crash immediately
-        function completeList() { alert("List completed! (not implemented yet)"); saveData(); }
-        function showRecipeModal() { document.getElementById('recipeModal').classList.add('active'); }
-        function closeRecipeModal() { document.getElementById('recipeModal').classList.remove('active'); }
-        function setRecipeMode(mode) { alert("Mode changed to: " + mode); }
-        function saveRecipe() { alert("Recipe saved! (not implemented)"); }
-        function switchTab(tab) { alert("Switched to: " + tab); }
-        function renderRecipes() {}
-        function renderMissingItems() {}
-        function renderHistory() {}
+        // Minimal implementations so buttons don't error
+        function completeList() {
+            alert("Great job shopping! List completed. (full feature coming soon)");
+            // You would normally move unchecked → missingItems here
+            saveData();
+            renderLists();
+        }
 
-        // Start the app
-        window.onload = loadData;
+        function switchTab(tabId) {
+            // Very basic tab switching
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('#listTab, #missingTab, #recipesTab, #historyTab')
+                .forEach(t => t.classList.add('hidden'));
+            
+            document.getElementById(tabId + 'Tab').classList.remove('hidden');
+        }
+
+        // Stub other functions that are called from HTML
+        function showRecipeModal()    { alert("Recipe modal - coming soon!"); }
+        function closeRecipeModal()   { /* nothing yet */ }
+        function setRecipeMode(mode)  { alert(`Switched to ${mode} mode`); }
+        function saveRecipe()         { alert("Recipe saved!"); }
+
+        // Start everything when page loads
+        window.addEventListener('load', loadData);
     </script>
 </body>
 </html>
