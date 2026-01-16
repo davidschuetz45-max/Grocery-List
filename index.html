@@ -719,19 +719,40 @@
                         <div class="item">
                             <input type="checkbox" ${item.checked ? 'checked' : ''} 
                                    onchange="toggleItem('${store.toLowerCase()}', '${item.category}', ${item.id})">
-                                                        <span class="item-name ${item.checked ? 'checked' : ''}">
+                                                                                    <span class="item-name ${item.checked ? 'checked' : ''}">
                                 ${item.name}
                             </span>
                             <div class="item-actions">
-                                <button class="btn btn-danger btn-small" 
-                                        onclick="deleteItem('${store.toLowerCase()}', '${item.category}', ${item.id})">
-                                    Delete
+                                <button class="btn btn-small btn-danger"
+                                        onclick="deleteItem('${store.toLowerCase()}','${item.category}',${item.id})">
+                                    ×
                                 </button>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 });
             }
 
             container.innerHTML = html;
         }
+
+        function renderLists() {
+            renderStoreList('Aldi', ALDI_CATEGORIES, aldiItems, 'aldiList');
+            renderStoreList('Kroger', KROGER_CATEGORIES, krogerItems, 'krogerList');
+        }
+
+        // Add missing functions stubs so it doesn't crash immediately
+        function completeList() { alert("List completed! (not implemented yet)"); saveData(); }
+        function showRecipeModal() { document.getElementById('recipeModal').classList.add('active'); }
+        function closeRecipeModal() { document.getElementById('recipeModal').classList.remove('active'); }
+        function setRecipeMode(mode) { alert("Mode changed to: " + mode); }
+        function saveRecipe() { alert("Recipe saved! (not implemented)"); }
+        function switchTab(tab) { alert("Switched to: " + tab); }
+        function renderRecipes() {}
+        function renderMissingItems() {}
+        function renderHistory() {}
+
+        // Start the app
+        window.onload = loadData;
+    </script>
+</body>
+</html>
