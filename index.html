@@ -466,64 +466,57 @@
         }
         
         function loadData() {
-            householdCode = localStorage.getItem('householdCode') || '';
-            
-            if (!householdCode) {
-                document.getElementById('welcomeScreen').classList.remove('hidden');
-                document.getElementById('listTab').classList.add('hidden');
-                return;
-            }
-            
-            document.getElementById('householdCodeDisplay').textContent = householdCode;
-            document.getElementById('householdInfo').classList.remove('hidden');
-            document.getElementById('welcomeScreen').classList.add('hidden');
-            document.getElementById('listTab').classList.remove('hidden');
-            
-            // Load shared household data
-            const savedHousehold = localStorage.getItem(`household:${householdCode}`);
-            if (savedHousehold) {
-                try {
-                    const parsed = JSON.parse(savedHousehold);
-                    aldiItems = parsed.aldiItems || {};
-                    krogerItems = parsed.krogerItems || {};
-                } catch (e) {
-                    console.error('Error loading household data:', e);
-                }
-            }
-            
-            // Load personal data
-            const savedRecipes = localStorage.getItem('recipes');
-            const savedHistory = localStorage.getItem('historyLists');
-            const savedMissing = localStorage.getItem('missingItems');
-            
-            if (savedRecipes) {
-                try {
-                    recipes = JSON.parse(savedRecipes);
-                } catch (e) {
-                    recipes = [];
-                }
-            }
-            if (savedHistory) {
-                try {
-                    historyLists = JSON.parse(savedHistory);
-                } catch (e) {
-                    historyLists = [];
-                }
-            }
-            if (savedMissing) {
-                try {
-                    missingItems = JSON.parse(savedMissing);
-                } catch (e) {
-                    missingItems = [];
-                }
-            }
-            
-            renderLists();
-            renderRecipes();
-            renderMissingItems();
-            renderHistory();
-        }
+    householdCode = localStorage.getItem('householdCode') || '';
+    
+    // Always try to show household info if we have a code
+    if (householdCode) {
+        document.getElementById('householdCodeDisplay').textContent = householdCode;
+        document.getElementById('householdInfo').classList.remove('hidden');
+        document.getElementById('welcomeScreen').classList.add('hidden');
+        document.getElementById('listTab').classList.remove('hidden');
         
+        // Load shared household shopping list
+        const savedHousehold = localStorage.getItem(`household:${householdCode}`);
+        if (savedHousehold) {
+            try {
+                const parsed = JSON.parse(savedHousehold);
+                aldiItems = parsed.aldiItems || {};
+                krogerItems = parsed.krogerItems || {};
+                console.log("Loaded items:", aldiItems, krogerItems); // ← debug helper
+            } catch (e) {
+                console.error("Failed to parse household data:", e);
+                aldiItems = {};
+                krogerItems = {};
+            }
+        } else {
+            console.log("No saved household data found for", householdCode);
+        }
+    } else {
+        // No code → show welcome
+        document.getElementById('welcomeScreen').classList.remove('hidden');
+        document.getElementById('listTab').classList.add('hidden');
+        return;
+    }
+    
+    // Load personal data (recipes, history, missing) — always try
+    try {
+        recipes = JSON.parse(localStorage.getItem('recipes') || '[]');
+    } catch (e) { recipes = []; }
+    
+    try {
+        historyLists = JSON.parse(localStorage.getItem('historyLists') || '[]');
+    } catch (e) { historyLists = []; }
+    
+    try {
+        missingItems = JSON.parse(localStorage.getItem('missingItems') || '[]');
+    } catch (e) { missingItems = []; }
+    
+    // Always render everything we have
+    renderLists();
+    renderRecipes();
+    renderMissingItems();
+    renderHistory();
+}
         function saveData() {
             if (!householdCode) return;
             
