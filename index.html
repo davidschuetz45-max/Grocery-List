@@ -498,7 +498,56 @@ console.log("Full household data:", localStorage.getItem(`household:${localStora
   renderLists();
   // etc.
 }
+// Robust tab switching (fixes earlier event issue)
+function switchTab(tabId) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    
+    // Find the tab button by its onclick attribute
+    const clickedTab = Array.from(document.querySelectorAll('.tab'))
+        .find(t => t.getAttribute('onclick')?.includes(`'${tabId}'`));
+    if (clickedTab) clickedTab.classList.add('active');
 
+    document.querySelectorAll('#listTab, #missingTab, #recipesTab, #historyTab')
+        .forEach(el => el.classList.add('hidden'));
+    
+    const target = document.getElementById(tabId + 'Tab');
+    if (target) target.classList.remove('hidden');
+}
+
+// Recipe modal functions
+function showRecipeModal() {
+    const modal = document.getElementById('recipeModal');
+    if (modal) {
+        modal.classList.add('active');
+        console.log('Modal opened');  // debug
+    } else {
+        console.error('Recipe modal element not found');
+    }
+}
+
+function closeRecipeModal() {
+    const modal = document.getElementById('recipeModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
+// Mode switching (basic, can expand later)
+function setRecipeMode(mode) {
+    currentRecipeMode = mode;
+    document.querySelectorAll('#textMode, #photoMode, #urlMode').forEach(el => el.classList.add('hidden'));
+    document.getElementById(mode + 'Mode').classList.remove('hidden');
+    
+    // Update active button style
+    document.querySelectorAll('.recipe-mode-tabs .btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(mode + 'ModeBtn').classList.add('active');
+}
+
+// Placeholder save
+function saveRecipe() {
+    alert('Recipe saved! (full implementation coming soon)');
+    closeRecipeModal();
+}
 function saveData() {
   if (!householdCode) return;
   try {
