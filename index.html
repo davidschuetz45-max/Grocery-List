@@ -750,24 +750,22 @@
         }
 
         function switchTab(tabId) {
-            // Very basic tab switching
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
+    // Remove active from all tabs
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    
+    // Find and activate the clicked tab
+    const activeTab = Array.from(document.querySelectorAll('.tab'))
+        .find(t => t.getAttribute('onclick')?.includes(`'${tabId}'`));
+    if (activeTab) activeTab.classList.add('active');
 
-            document.querySelectorAll('#listTab, #missingTab, #recipesTab, #historyTab')
-                .forEach(t => t.classList.add('hidden'));
-            
-            document.getElementById(tabId + 'Tab').classList.remove('hidden');
-        }
-
-        // Stub other functions that are called from HTML
-        function showRecipeModal()    { alert("Recipe modal - coming soon!"); }
-        function closeRecipeModal()   { /* nothing yet */ }
-        function setRecipeMode(mode)  { alert(`Switched to ${mode} mode`); }
-        function saveRecipe()         { alert("Recipe saved!"); }
-
-        // Start everything when page loads
-        window.addEventListener('load', loadData);
+    // Hide all content panels
+    document.querySelectorAll('#listTab, #missingTab, #recipesTab, #historyTab')
+        .forEach(t => t.classList.add('hidden'));
+    
+    // Show the selected one
+    const panel = document.getElementById(tabId + 'Tab');
+    if (panel) panel.classList.remove('hidden');
+}
     </script>
 </body>
 </html>
