@@ -453,6 +453,15 @@
         const KROGER_CATEGORIES = ['Produce', 'Meat & Seafood', 'Pickles, Sauces, Condiments & Pasta', 'International & Rice', 'Baking', 'Spices', 'Coffee & Tea', 'Dairy', 'Snacks', 'Paper Goods', 'Cheese', 'Distilled Water', 'Juices', 'Eggs', 'Alcohol', 'Frozen Foods'];
         const KROGER_DEFAULT_ITEMS = ['shallots', 'shallot', 'bacon', 'pickles', 'pickle', 'gnocchi', 'chocolate chips', 'chocolate chip', 'condiments', 'condiment', 'paper towels', 'paper towel', 'white rice', 'alcohol', 'beer', 'wine', 'vodka', 'whiskey', 'rum', 'gin', 'tequila', 'liquor', 'distilled water', 'pineapple'];
         
+        console.log("Browser:", navigator.userAgent);
+console.log("localStorage available?", !!window.localStorage);
+try {
+  localStorage.setItem("test", "hello");
+  console.log("Test write OK, read back:", localStorage.getItem("test"));
+  localStorage.removeItem("test");
+} catch(e) {
+  console.log("localStorage BLOCKED:", e.message);
+}
         console.log("householdCode from storage:", localStorage.getItem('householdCode'));
 console.log("Full household data:", localStorage.getItem(`household:${localStorage.getItem('householdCode') || 'none'}`));
        
