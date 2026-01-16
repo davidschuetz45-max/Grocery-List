@@ -1,0 +1,20 @@
+{
+  "name": "grocery-list-app",
+  "version": "1.0.0",
+  "description": "Smart Grocery List - Capacitor wrapped",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step needed for static HTML'",
+    "sync": "npx cap sync"
+  },
+  "keywords": ["capacitor", "grocery", "list"],
+  "author": "David",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^latest",
+    "@capacitor/ios": "^latest"
+  }
+}
