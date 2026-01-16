@@ -453,6 +453,9 @@
         const KROGER_CATEGORIES = ['Produce', 'Meat & Seafood', 'Pickles, Sauces, Condiments & Pasta', 'International & Rice', 'Baking', 'Spices', 'Coffee & Tea', 'Dairy', 'Snacks', 'Paper Goods', 'Cheese', 'Distilled Water', 'Juices', 'Eggs', 'Alcohol', 'Frozen Foods'];
         const KROGER_DEFAULT_ITEMS = ['shallots', 'shallot', 'bacon', 'pickles', 'pickle', 'gnocchi', 'chocolate chips', 'chocolate chip', 'condiments', 'condiment', 'paper towels', 'paper towel', 'white rice', 'alcohol', 'beer', 'wine', 'vodka', 'whiskey', 'rum', 'gin', 'tequila', 'liquor', 'distilled water', 'pineapple'];
         
+        console.log("householdCode from storage:", localStorage.getItem('householdCode'));
+console.log("Full household data:", localStorage.getItem(`household:${localStorage.getItem('householdCode') || 'none'}`));
+       
         let householdCode = '';
         let aldiItems = {};
         let krogerItems = {};
@@ -518,23 +521,17 @@
     renderHistory();
 }
         function saveData() {
-            if (!householdCode) return;
-            
-            const householdData = {
-                aldiItems,
-                krogerItems,
-                lastUpdated: Date.now()
-            };
-            
-            // Save household data (shared)
-            localStorage.setItem(`household:${householdCode}`, JSON.stringify(householdData));
-            
-            // Save personal data
-            localStorage.setItem('recipes', JSON.stringify(recipes));
-            localStorage.setItem('historyLists', JSON.stringify(historyLists));
-            localStorage.setItem('missingItems', JSON.stringify(missingItems));
-        }
-        
+    if (!householdCode) return;
+    try {
+        const householdData = { aldiItems, krogerItems, lastUpdated: Date.now() };
+        localStorage.setItem(`household:${householdCode}`, JSON.stringify(householdData));
+        localStorage.setItem('householdCode', householdCode); // extra safety
+        console.log("Saved successfully");
+    } catch (e) {
+        console.error("Save failed:", e);
+        alert("Storage save failed - Safari privacy may be blocking it");
+    }
+}
         function startNewList() {
             householdCode = generateHouseholdCode();
             localStorage.setItem('householdCode', householdCode);
